@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+    --color-bg: #dba27d;
+    --color-ink: #241614;
+    --color-ink-soft: #6b5c50;
+    --color-ember: #942300;
+    --color-clay: #a87a5c;
+    --color-line: #e5dcd2;
+    --font-body: 'system-ui', -apple-system, "Segeoe UI", "Helvetica Neue", sans-serif;
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (width >= 40rem) {
+  html{
+    scroll-padding-top: 4.5rem;
+  }
+}
+
+body{
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
