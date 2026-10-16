@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { books } from '../data/books';
+import { books } from '../data/data';
 import { BookCard } from './BookCard';
 const genres = ['All', 'Fiction', 'Non-Fiction', 'Staff Picks'];
 

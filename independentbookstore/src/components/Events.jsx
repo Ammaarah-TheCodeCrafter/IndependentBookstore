@@ -1,4 +1,4 @@
-import { events } from '../data/events';
+import { events } from '../data/data';
 import { EventCard } from './EventCard';
 
 export function Events() {
