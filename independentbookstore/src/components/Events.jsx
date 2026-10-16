@@ -5,8 +5,8 @@ export function Events() {
     
     return(
         <section id="events">
-            <h2>Events</h2>
-            <div>
+            <h2 className="text-4xl font-bold">Events</h2>
+            <div  className="grid grid-cols-1 gap-5 sm:grid-cols-3 p-5">
                 {events.map((event) => (
                     <EventCard key={event.id} event={event}/>
                 ))}

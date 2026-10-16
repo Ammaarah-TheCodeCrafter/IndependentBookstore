@@ -15,4 +15,5 @@ export const events=[{
     title: 'Writing Workshop',
     date: '2026-11-15',
     description: 'Attend our writing workshop led by published author John Smith. Learn tips and techniques to improve your writing skills.'
-}];
+}
+];

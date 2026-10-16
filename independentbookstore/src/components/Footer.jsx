@@ -1,13 +1,13 @@
 export function Footer(){
     return(
-        <footer>
+        <footer className="bg-clay">
+            <div className="grid grid-cols-2">
             <div>
-            <div>
-                <p>Independent Bookstore</p>
+                <p>Independent <span className="text-green-950">Bookstore</span></p>
                 <p>Escape your Life. Read someone else's</p>
             </div>
             <div>
-                <h3>Contact Us</h3>
+                <h3 className="text-2xl font-bold">Contact Us</h3>
                 <p>Email: info@independentbookstore.com</p>
                 <p>Phone: (123) 456-7890</p>
             </div>
