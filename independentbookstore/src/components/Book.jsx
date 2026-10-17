@@ -18,7 +18,7 @@ export function Book() {
                 <option value="Non-Fiction">Non-Fiction</option>
                 <option value="Staff Picks">Staff Picks</option>
             </select>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 p-5">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 p-5">
                 {filteredBooks.map((book) => (
                     <BookCard key={book.id} book={book} />
                 ))}
