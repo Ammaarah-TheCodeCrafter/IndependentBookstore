@@ -4,7 +4,7 @@ export default function Login(){
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        fetch('https://independentbookstore-api.onrender.com/api/me',
+        fetch(`${import.meta.env.VITE_API_URL}/api/me`,
             {
                 credentials: 'include',
             }
@@ -26,7 +26,7 @@ export default function Login(){
         e.preventDefault();
 
         try{
-            const response = await fetch('https://independentbookstore-api.onrender.com/api/login',{
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`,{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 credentials: 'include',

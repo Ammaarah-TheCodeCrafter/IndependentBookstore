@@ -5,7 +5,7 @@ export function Header(){
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        fetch('https://independentbookstore-api.onrender.com/api/me',
+        fetch(`${import.meta.env.VITE_API_URL}/api/me`,
             {
                 credentials: "include",
             }
@@ -21,7 +21,7 @@ export function Header(){
 
      async function handleLogout(){
         try{
-            const response = await fetch('https://independentbookstore-api.onrender.com/api/logout',{
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/logout`,{
                 method: 'POST',
                 credentials: 'include',
             });

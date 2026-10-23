@@ -16,7 +16,7 @@ export default function Signup(){
         }
 
         try{
-            const response = await fetch('https://independentbookstore-api.onrender.com/api/signup',{
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`,{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 credentials: 'include',
