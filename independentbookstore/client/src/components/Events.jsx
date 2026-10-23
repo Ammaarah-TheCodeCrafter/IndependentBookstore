@@ -6,7 +6,7 @@ export function Events() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/events').then((response) => {
+        fetch('https://independentbookstore-api.onrender.com/api/events').then((response) => {
             if(!response.ok) {
                 throw new Error('Failed to fetch events');
             }

@@ -1,44 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-export default function Login(){
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        fetch('http://localhost:3000/api/me',
-            {
-                credentials: 'include',
-            }
-        ).then((response) => {
-            if (!response.ok) return null;
-            return response.json();
-        }).then((data) => {
-            if (data) setUser(data.user);
-        })
-        .catch(() => {});
-    },[]);
-
-
+export default function Signup(){
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
 
+        if(password !== confirmPassword){
+            setMessage('Passwords do not match.');
+            return;
+        }
+
         try{
-            const response = await fetch('http://localhost:3000/api/login',{
+            const response = await fetch('https://independentbookstore-api.onrender.com/api/signup',{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 credentials: 'include',
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ name, email, password }),
             });
 
             const data = await response.json();
             setMessage(data.message);
-
-            if (response.ok){
-                window.location.href = '/';
-            }
         } catch {
             setMessage('Could not connect to the server.');
         }
@@ -46,13 +32,18 @@ export default function Login(){
 
     return (
         <section className='mx-auto max-w-md p-5'>
-            <h2 className='text-4x1 font-bold'>Login</h2>
-
-            {user && (
-                <p className='mb-4'>You're logged in as {user.name}!</p>
-            )}
+            <h2 className='mb-4 text-4x1 font-bold'>Create an Account</h2>
 
             <form onSubmit={handleSubmit} className='space-y-4'>
+                <p>Name</p>
+                 <input
+                    type='text'
+                    placeholder='Full name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className='w-full rounded border p-2.5'
+                />
                 <p>Email</p>
                 <input
                     type='email'
@@ -71,19 +62,27 @@ export default function Login(){
                     required
                     className='w-full rounded border p-2.5'
                 />
-               
+                <p>Confirm Password</p>
+                 <input
+                    type='password'
+                    placeholder='Confirm password'
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    className='w-full rounded border p-2.5'
+                />
+
                 <button 
                     type='submit'
                     className='rounded bg-clay px-5 py-2.5 text-white'>
-                        Login
+                        Sign Up
                 </button>
                 
             </form>
 
             {message && <p className='mt-4'>{message}</p>}
-            <p className='mt-4 text-center'>Don't have an account? {' '}
-                <a href="/signup" className='font-semibold underline'> Create one </a>
-            </p>
+
+            <p className='mt-4 text-center'>Already have an account? <a href="/Login" className='font-semibold underline'> Login </a></p>
 
         </section>
     );

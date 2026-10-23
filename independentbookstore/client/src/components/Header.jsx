@@ -5,7 +5,7 @@ export function Header(){
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/me',
+        fetch('https://independentbookstore-api.onrender.com/api/me',
             {
                 credentials: "include",
             }
@@ -21,7 +21,7 @@ export function Header(){
 
      async function handleLogout(){
         try{
-            const response = await fetch('http://localhost:3000/api/logout',{
+            const response = await fetch('https://independentbookstore-api.onrender.com/api/logout',{
                 method: 'POST',
                 credentials: 'include',
             });

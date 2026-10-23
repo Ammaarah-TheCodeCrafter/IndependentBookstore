@@ -7,7 +7,7 @@ export function Book() {
     const [filter, setFilter] = useState("All");
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/books').then((response) => {
+        fetch('https://independentbookstore-api.onrender.com/api/books').then((response) => {
             if (!response.ok) {
                 throw new Error('Failed to fetch books');
             }
