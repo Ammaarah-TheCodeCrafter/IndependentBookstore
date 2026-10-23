@@ -1,7 +1,22 @@
-import { events } from '../data/data';
+import { useState, useEffect } from "react";
 import { EventCard } from './EventCard';
 
 export function Events() {
+
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/events').then((response) => {
+            if(!response.ok) {
+                throw new Error('Failed to fetch events');
+            }
+            return response.json();
+        })
+        .then((data) => setEvents(data))
+        .catch((error) => {
+            console.error('Error fetching events: ', error);
+        });
+    }, []);
     
     return(
         <section id="events">

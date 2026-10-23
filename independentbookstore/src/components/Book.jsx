@@ -1,13 +1,28 @@
-import { useState } from 'react';
-import { books } from '../data/data';
+import { useState, useEffect } from 'react';
 import { BookCard } from './BookCard';
 const genres = ['All', 'Fiction', 'Non-Fiction', 'Staff Picks'];
 
 export function Book() {
+    const [books, setBooks] = useState([]);
     const [filter, setFilter] = useState("All");
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/books').then((response) => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch books');
+            }
+            return response.json();
+        })
+        .then((data) => setBooks(data))
+        .catch((error) => {
+            console.error('Error fetching books: ', error);
+        });
+    }, []);
+
     const filteredBooks = books.filter((book) => {
         return filter === "All" || book.genre === filter;
     });
+    
     return(
         <section id="books" className="mx-auto max-w-[1100] px-5 py-10">
             <h2 className="text-4xl font-bold">Books</h2>
